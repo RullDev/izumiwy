@@ -1,30 +1,24 @@
 
 import React from "react";
-import { NavigationMenu } from 'radix-ui';
+import { Menu } from '@headlessui/react';
 
 const Header = () => {
   return (
     <header className="relative h-40 w-full">
-      <NavigationMenu.Root>
-        <NavigationMenu.List className="absolute top-4 right-4 z-10 flex gap-4 p-2 rounded-lg bg-gray-800/50">
-          <NavigationMenu.Item>
-            <NavigationMenu.Link asChild>
-              <a href="#home" className="text-white hover:text-gray-300 transition-colors">
-                Home
-              </a>
-            </NavigationMenu.Link>
-          </NavigationMenu.Item>
-          <NavigationMenu.Item>
-            <NavigationMenu.Link asChild>
-              <a href="#about" className="text-white hover:text-gray-300 transition-colors">
-                About
-              </a>
-            </NavigationMenu.Link>
-          </NavigationMenu.Item>
-          <NavigationMenu.Indicator />
-          <NavigationMenu.Viewport />
-        </NavigationMenu.List>
-      </NavigationMenu.Root>
+      <Menu as="div" className="absolute top-4 right-4 z-10">
+        <div className="flex gap-4 p-2 rounded-lg bg-gray-800/50">
+          <Menu.Item>
+            <a href="#home" className="text-white hover:text-gray-300 transition-colors">
+              Home
+            </a>
+          </Menu.Item>
+          <Menu.Item>
+            <a href="#about" className="text-white hover:text-gray-300 transition-colors">
+              About
+            </a>
+          </Menu.Item>
+        </div>
+      </Menu>
       <img 
         src="" 
         alt="Header Background" 
