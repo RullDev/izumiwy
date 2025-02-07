@@ -6,7 +6,7 @@ import * as Separator from '@radix-ui/react-separator';
 const Footer = () => {
   return (
     <footer className="text-center mt-6 text-sm text-gray-400">
-      <Separator.Root className="h-px bg-gray-800 my-4" />
+      <Separator.Root className="h-px bg-gray-800 my-4" decorative orientation="horizontal" />
       <p>See what I'm currently listening on Spotify</p>
       <div className="flex justify-center items-center gap-2 mt-1">
         <FaSpotify className="text-green-500" />
