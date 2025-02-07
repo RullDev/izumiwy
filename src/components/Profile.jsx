@@ -1,6 +1,6 @@
 
 import React from "react";
-import * as Avatar from '@radix-ui/react-avatar';
+import { Avatar } from 'radix-ui';
 import { FaInstagram, FaSpotify, FaGithub, FaCircle } from "react-icons/fa";
 
 const Profile = () => {

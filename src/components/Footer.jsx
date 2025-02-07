@@ -1,7 +1,7 @@
 
 import React from "react";
 import { FaSpotify } from "react-icons/fa";
-import * as Separator from '@radix-ui/react-separator';
+import { Separator } from 'radix-ui';
 
 const Footer = () => {
   return (

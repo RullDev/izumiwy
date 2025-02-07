@@ -1,6 +1,6 @@
 
 import React from "react";
-import * as NavigationMenu from '@radix-ui/react-navigation-menu';
+import { NavigationMenu } from 'radix-ui';
 
 const Header = () => {
   return (

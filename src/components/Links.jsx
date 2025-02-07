@@ -1,6 +1,6 @@
 
 import React from "react";
-import * as Card from '@radix-ui/react-card';
+import { Card } from 'radix-ui';
 
 const links = [
   { title: "Personal Website", description: "About me.", url: "#", icon: "🌐" },
