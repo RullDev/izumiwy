@@ -4,7 +4,7 @@ import { FaInstagram, FaSpotify, FaGithub } from "react-icons/fa";
 
 const Profile = () => {
   return (
-    <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:bg-white/10 transition-all duration-300">
+    <div className="bg-white/10 dark:bg-white/5 backdrop-blur-lg p-6 rounded-lg border border-gray-200/20 dark:border-white/10 hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 shadow-lg">
       <div className="text-center">
         <div className="inline-block relative">
           <img
