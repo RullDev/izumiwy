@@ -1,34 +1,32 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaTwitter, FaLinkedin, FaEnvelope, FaReact, FaNodeJs, FaDatabase, FaCode } from 'react-icons/fa';
+import { FaGithub, FaTwitter, FaLinkedin, FaEnvelope, FaReact, FaNodeJs, FaPython, FaJs } from 'react-icons/fa';
 
 const About = () => {
   const pageVariants = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-    exit: { opacity: 0, y: -20 }
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 }
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3
-      }
+  const floatingAnimation = {
+    y: ['-10px', '10px'],
+    transition: {
+      duration: 2,
+      repeat: Infinity,
+      repeatType: 'reverse',
+      ease: 'easeInOut'
     }
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    show: { 
-      opacity: 1, 
-      y: 0,
+  const starVariants = {
+    animate: {
+      scale: [1, 1.2, 1],
+      opacity: [0.5, 1, 0.5],
       transition: {
-        type: "spring",
-        bounce: 0.4
+        duration: 2,
+        repeat: Infinity,
+        ease: 'easeInOut'
       }
     }
   };
@@ -39,178 +37,121 @@ const About = () => {
       animate="animate"
       exit="exit"
       variants={pageVariants}
-      className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-20"
+      className="min-h-screen bg-gradient-to-b from-gray-900 via-purple-900 to-indigo-900 pt-20 relative overflow-hidden"
     >
-      <motion.div 
-        className="max-w-4xl mx-auto px-4 py-8"
-        variants={containerVariants}
-        initial="hidden"
-        animate="show"
-      >
-        {/* Profile Section with Animated Background */}
-        <motion.section variants={itemVariants} className="text-center mb-20">
-          <motion.div 
-            className="relative w-36 h-36 mx-auto mb-8"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          >
-            <motion.div 
-              className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
-              animate={{ 
-                rotate: 360,
-                background: [
-                  "linear-gradient(to right, #3b82f6, #8b5cf6, #ec4899)",
-                  "linear-gradient(to right, #ec4899, #3b82f6, #8b5cf6)",
-                  "linear-gradient(to right, #8b5cf6, #ec4899, #3b82f6)"
-                ]
-              }}
-              transition={{ 
-                rotate: { duration: 15, repeat: Infinity, ease: "linear" },
-                background: { duration: 6, repeat: Infinity, ease: "easeInOut" }
-              }}
-            />
+      {/* Animated Stars Background */}
+      {[...Array(20)].map((_, i) => (
+        <motion.div
+          key={i}
+          variants={starVariants}
+          animate="animate"
+          className="absolute w-1 h-1 bg-white rounded-full"
+          style={{
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+            animationDelay: `${Math.random() * 2}s`
+          }}
+        />
+      ))}
+
+      <div className="max-w-4xl mx-auto px-4 py-8 relative z-10">
+        {/* Profile Section */}
+        <motion.section animate={floatingAnimation} className="text-center mb-20">
+          <div className="relative w-40 h-40 mx-auto mb-8">
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-pulse" />
             <motion.div
-              className="absolute inset-1 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 opacity-50"
-              animate={{ scale: [1, 1.1, 1] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute inset-2 rounded-full bg-gradient-to-r from-cyan-400 to-purple-600 opacity-75"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             />
             <img
               src="your-profile-image-url"
               alt="Profile"
-              className="absolute inset-2 w-36 h-36 rounded-full object-cover border-4 border-white dark:border-gray-800"
+              className="absolute inset-3 w-34 h-34 rounded-full object-cover border-4 border-purple-300/30"
             />
-          </motion.div>
+          </div>
           <motion.h1 
-            className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-4"
+            className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 mb-4"
             animate={{ 
               backgroundPosition: ["0%", "100%"],
-              color: ["#2563eb", "#7c3aed"]
+              color: ["#2dd4bf", "#a855f7"]
             }}
             transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
           >
-            About Me
+            Space Explorer
           </motion.h1>
-          <motion.p 
-            className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
-            variants={itemVariants}
-          >
-            A passionate developer focused on creating elegant and efficient solutions.
-          </motion.p>
         </motion.section>
 
-        {/* Skills Section with Hover Animations */}
-        <motion.section variants={itemVariants} className="mb-20">
-          <h2 className="text-2xl font-semibold text-center mb-8">Skills</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { icon: FaReact, name: 'React', color: 'text-blue-500' },
-              { icon: FaNodeJs, name: 'Node.js', color: 'text-green-500' },
-              { icon: FaDatabase, name: 'Database', color: 'text-yellow-500' },
-              { icon: FaCode, name: 'TypeScript', color: 'text-purple-500' }
-            ].map((skill, index) => (
-              <motion.div
-                key={skill.name}
-                variants={itemVariants}
-                whileHover={{ 
-                  scale: 1.05,
-                  rotate: [0, -5, 5, 0],
-                  transition: { duration: 0.3 }
-                }}
-                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700"
-              >
-                <motion.div
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <skill.icon className={`w-10 h-10 mx-auto mb-3 ${skill.color}`} />
-                </motion.div>
-                <p className="text-center font-medium">{skill.name}</p>
+        {/* Skills Section */}
+        <motion.section className="mb-20 grid grid-cols-2 md:grid-cols-4 gap-6">
+          {[
+            { icon: FaReact, name: 'React', color: 'cyan' },
+            { icon: FaNodeJs, name: 'Node.js', color: 'green' },
+            { icon: FaPython, name: 'Python', color: 'yellow' },
+            { icon: FaJs, name: 'JavaScript', color: 'purple' }
+          ].map((skill) => (
+            <motion.div
+              key={skill.name}
+              whileHover={{ scale: 1.1, rotateZ: 5 }}
+              className="p-6 rounded-xl bg-white/5 backdrop-blur-lg border border-white/10 hover:border-white/20 transition-all"
+            >
+              <motion.div animate={floatingAnimation}>
+                <skill.icon className={`w-12 h-12 mx-auto mb-4 text-${skill.color}-400`} />
+                <p className="text-white/90 font-medium">{skill.name}</p>
               </motion.div>
-            ))}
-          </div>
+            </motion.div>
+          ))}
         </motion.section>
 
-        {/* Projects Section with Card Animations */}
-        <motion.section variants={itemVariants} className="mb-20">
-          <h2 className="text-2xl font-semibold text-center mb-8">Projects</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[1, 2].map((_, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                whileHover={{ 
-                  scale: 1.03,
-                  transition: { type: "spring", stiffness: 300 }
-                }}
-                className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700"
-              >
-                <motion.img 
-                  src={`project${index + 1}-image-url`}
-                  alt={`Project ${index + 1}`}
-                  className="w-full h-48 object-cover"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.3 }}
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">Project {index + 1}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">
-                    Description of project {index + 1}
-                  </p>
-                  <motion.a
-                    href="#"
-                    className="inline-flex items-center text-blue-500 hover:text-blue-600"
-                    whileHover={{ x: 5 }}
-                  >
-                    View Project →
-                  </motion.a>
+        {/* Projects Section */}
+        <motion.section className="mb-20 space-y-8">
+          {[1, 2].map((_, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.02 }}
+              className="p-6 rounded-xl bg-white/5 backdrop-blur-lg border border-white/10 hover:border-white/20 transition-all"
+            >
+              <div className="flex items-center space-x-4">
+                <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500" />
+                <div>
+                  <h3 className="text-xl font-semibold text-white/90">Cosmic Project {index + 1}</h3>
+                  <p className="text-white/60">A journey through the digital universe</p>
                 </div>
-              </motion.div>
-            ))}
-          </div>
+              </div>
+            </motion.div>
+          ))}
         </motion.section>
 
-        {/* Contact Form with Input Animations */}
-        <motion.section variants={itemVariants} className="max-w-md mx-auto">
-          <h2 className="text-2xl font-semibold text-center mb-8">Get in Touch</h2>
-          <motion.form 
+        {/* Contact Form */}
+        <motion.section className="max-w-md mx-auto">
+          <form 
             action="mailto:khoirulmustofa767@gmail.com"
             method="post"
             encType="text/plain"
-            className="space-y-6"
+            className="space-y-4"
           >
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileFocus={{ scale: 1.02 }}
-            >
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                className="w-full px-4 py-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-blue-500 transition-all"
-              />
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileFocus={{ scale: 1.02 }}
-            >
-              <textarea
-                name="message"
-                rows="4"
-                placeholder="Your Message"
-                className="w-full px-4 py-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-blue-500 transition-all"
-              ></textarea>
-            </motion.div>
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              className="w-full px-4 py-3 rounded-lg bg-white/5 backdrop-blur-lg border border-white/10 focus:border-white/20 text-white placeholder-white/50 transition-all"
+            />
+            <textarea
+              name="message"
+              rows="4"
+              placeholder="Your Message"
+              className="w-full px-4 py-3 rounded-lg bg-white/5 backdrop-blur-lg border border-white/10 focus:border-white/20 text-white placeholder-white/50 transition-all"
+            />
             <motion.button
-              type="submit"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 rounded-lg hover:opacity-90 transition-all"
+              className="w-full py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-medium hover:opacity-90 transition-all"
             >
               Send Message
             </motion.button>
-          </motion.form>
+          </form>
         </motion.section>
-      </motion.div>
+      </div>
     </motion.div>
   );
 };
