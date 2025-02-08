@@ -1,10 +1,10 @@
 
 import React from "react";
-import { FaSpotify, FaCheckCircle } from "react-icons/fa";
+import { FaSpotify } from "react-icons/fa";
 import { HiArrowRight } from "react-icons/hi";
 
 const links = [
-  { title: "Personal Website", description: "About me.", url: "#", icon: "🌐", verified: true },
+  { title: "Personal Website", description: "About me.", url: "#", icon: "🌐" },
   { title: "Character.ai RestAPI", description: "Documentation for Character.ai API.", url: "#", icon: "🔥" },
   { title: "WhatsApp Bot", description: "Natsumi Bot WhatsApp.", url: "#", icon: "💬" },
   { title: "WhatsApp Channel", description: "Channel about Natsumi Bot.", url: "#", icon: "📢" },
@@ -25,7 +25,7 @@ const Links = () => {
         <a 
           key={index}
           href={link.url}
-          className={`flex items-center justify-between p-3 bg-white/5 backdrop-blur-sm hover:bg-white/10 ${link.isSpotify ? 'rounded-full' : 'rounded-lg'} transition-colors duration-300 cursor-pointer group`}
+          className={`flex items-center justify-between p-3 bg-white/5 backdrop-blur-sm hover:bg-white/10 ${link.isSpotify ? 'rounded-full' : 'rounded-lg'} transition-all duration-300 cursor-pointer group hover:translate-x-1`}
         >
           {link.isSpotify ? (
             <>
@@ -45,17 +45,12 @@ const Links = () => {
             <>
               <div className="flex items-center space-x-3">
                 <span className="text-lg">{link.icon}</span>
-                <div className="flex items-center">
-                  <div>
-                    <h3 className="text-sm font-medium flex items-center">
-                      {link.title}
-                      {link.verified && <FaCheckCircle className="text-blue-500 ml-1 text-xs" />}
-                    </h3>
-                    <p className="text-xs text-gray-400">{link.description}</p>
-                  </div>
+                <div>
+                  <h3 className="text-sm font-medium">{link.title}</h3>
+                  <p className="text-xs text-gray-400">{link.description}</p>
                 </div>
               </div>
-              <HiArrowRight className="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition-opacity" />
+              <HiArrowRight className="text-gray-400 text-sm" />
             </>
           )}
         </a>

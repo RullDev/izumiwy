@@ -1,31 +1,29 @@
 
 import React from "react";
 import { Menu } from '@headlessui/react';
+import { FaSun, FaMoon } from 'react-icons/fa';
 
 const Header = () => {
+  const [isDark, setIsDark] = React.useState(true);
+
+  const toggleTheme = () => {
+    setIsDark(!isDark);
+    document.documentElement.classList.toggle('dark');
+  };
+
   return (
-    <header className="relative h-40 w-full">
-      <Menu as="div" className="absolute top-4 right-4 z-10">
-        <div className="flex gap-4 p-2 rounded-lg bg-gray-800/50">
-          <Menu.Item>
-            <a href="#home" className="text-white hover:text-gray-300 transition-colors">
-              Home
-            </a>
-          </Menu.Item>
-          <Menu.Item>
-            <a href="#about" className="text-white hover:text-gray-300 transition-colors">
-              About
-            </a>
-          </Menu.Item>
+    <div className="fixed top-0 left-0 right-0 z-50 p-4 flex justify-between items-center bg-white/5 backdrop-blur-sm">
+      <div className="text-xl font-semibold">Natsumi</div>
+      <button
+        onClick={toggleTheme}
+        className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all transform hover:scale-105"
+      >
+        <div className="relative w-6 h-6">
+          <FaSun className={`absolute transition-all duration-300 ${isDark ? 'opacity-0 rotate-180' : 'opacity-100 rotate-0'}`} />
+          <FaMoon className={`absolute transition-all duration-300 ${isDark ? 'opacity-100 rotate-0' : 'opacity-0 rotate-180'}`} />
         </div>
-      </Menu>
-      <img 
-        src="" 
-        alt="Header Background" 
-        className="object-cover w-full h-full grayscale brightness-75" 
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
-    </header>
+      </button>
+    </div>
   );
 };
 
