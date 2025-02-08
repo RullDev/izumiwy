@@ -50,20 +50,29 @@ const About = () => {
         {/* Profile Section with Animated Background */}
         <motion.section variants={itemVariants} className="text-center mb-20">
           <motion.div 
-            className="relative w-40 h-40 mx-auto mb-8"
-            whileHover={{ scale: 1.1 }}
-            transition={{ type: "spring", stiffness: 300 }}
+            className="relative w-36 h-36 mx-auto mb-8"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
             <motion.div 
-              className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"
+              className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
               animate={{ 
                 rotate: 360,
-                scale: [1, 1.2, 1],
+                background: [
+                  "linear-gradient(to right, #3b82f6, #8b5cf6, #ec4899)",
+                  "linear-gradient(to right, #ec4899, #3b82f6, #8b5cf6)",
+                  "linear-gradient(to right, #8b5cf6, #ec4899, #3b82f6)"
+                ]
               }}
               transition={{ 
-                rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-                scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+                rotate: { duration: 15, repeat: Infinity, ease: "linear" },
+                background: { duration: 6, repeat: Infinity, ease: "easeInOut" }
               }}
+            />
+            <motion.div
+              className="absolute inset-1 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 opacity-50"
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             />
             <img
               src="your-profile-image-url"
