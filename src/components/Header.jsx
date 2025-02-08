@@ -37,7 +37,7 @@ const Header = () => {
             whileTap={{ scale: 0.95 }}
           >
             <Link to="/" className="text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Natsumi
+              Izumii
             </Link>
           </motion.div>
 
@@ -117,7 +117,7 @@ const Header = () => {
                 >
                   {[
                     { to: "/", label: "Home" },
-                    { to: "/about", label: "About" }
+                    { to: "/about", label: "About Me" }
                   ].map((link) => (
                     <motion.div
                       key={link.to}

@@ -1,6 +1,7 @@
 
 import React from "react";
 import { FaInstagram, FaSpotify, FaGithub } from "react-icons/fa";
+import { RiVerifiedBadgeFill } from "react-icons/ri";
 
 const Profile = () => {
   return (
@@ -8,7 +9,7 @@ const Profile = () => {
       <div className="text-center">
         <div className="inline-block relative">
           <img
-            src=""
+            src="/logo.jpg"
             alt="Profile"
             className="w-20 h-20 rounded-full border-2 border-white/20 bg-gray-600 transition-transform hover:scale-105"
             onError={(e) => {
@@ -17,18 +18,26 @@ const Profile = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full animate-pulse"></div>
         </div>
-        <h1 className="text-lg font-bold mt-2">Natsumi つ内</h1>
-        <p className="text-gray-400 text-xs">あなたが行くなら、私はここに残る。</p>
+        <h1 className="text-lg font-bold mt-2">Izumii. <RiVerifiedBadgeFill className="inline text-blue-500" /></h1>
+        
+          
+        <p className="text-gray-400 text-xs">Dreamer, Thinker, Doer.</p>
         <div className="flex justify-center gap-2 mt-3">
-          <button className="bg-white/5 px-3 py-1 rounded-full text-xs hover:bg-white/10 transition-all hover:scale-105">Ngoding</button>
-          <button className="bg-white/5 px-3 py-1 rounded-full text-xs hover:bg-white/10 transition-all hover:scale-105">Turu</button>
-          <button className="bg-white/5 px-3 py-1 rounded-full text-xs hover:bg-white/10 transition-all hover:scale-105">Anime</button>
-          <button className="bg-white/5 px-3 py-1 rounded-full text-xs hover:bg-white/10 transition-all hover:scale-105">Music</button>
+          <span className="bg-white/5 px-3 py-1 rounded-full text-xs hover:bg-white/10 transition-all hover:scale-105">💻 Ngoding</span>
+          <span className="bg-white/5 px-3 py-1 rounded-full text-xs hover:bg-white/10 transition-all hover:scale-105">Turu</span>
+          <span className="bg-white/5 px-3 py-1 rounded-full text-xs hover:bg-white/10 transition-all hover:scale-105">Anime</span>
+          <span className="bg-white/5 px-3 py-1 rounded-full text-xs hover:bg-white/10 transition-all hover:scale-105">Music</span>
         </div>
         <div className="flex justify-center gap-4 mt-4 text-xl text-gray-400">
-          <FaInstagram className="cursor-pointer hover:text-white transition-colors hover:-translate-y-1 transform transition-transform" />
-          <FaSpotify className="cursor-pointer hover:text-white transition-colors hover:-translate-y-1 transform transition-transform" />
-          <FaGithub className="cursor-pointer hover:text-white transition-colors hover:-translate-y-1 transform transition-transform" />
+          <a href="https://instagram.com/4rllzyy_" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-zinc-100 transition-colors">
+            <FaInstagram className="h-5 w-5 text-pink-600" />
+          </a>
+          <a href="https://github.com/rlzyy" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-zinc-100 transition-colors">
+            <FaGithub className="h-5 w-5 text-white" />
+          </a>
+          <a href="https://open.spotify.com/playlist/1K1Sz1NldB7G8Bibs5GZuI?si=Q7EEsgOSS06YST1IaIXYPg" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-zinc-100 transition-colors">
+            <FaSpotify className="h-5 w-5 text-green-600" />
+          </a>
         </div>
       </div>
     </div>

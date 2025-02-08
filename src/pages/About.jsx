@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaTwitter, FaLinkedin, FaEnvelope, FaReact, FaNodeJs, FaDatabase, FaCode } from 'react-icons/fa';
+import { FaReact, FaNodeJs, FaDatabase, FaCode } from 'react-icons/fa';
 
 const About = () => {
   const pageVariants = {
@@ -39,7 +39,7 @@ const About = () => {
       animate="animate"
       exit="exit"
       variants={pageVariants}
-      className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-20"
+      className="min-h-screen bg-gray-50 dark:bg-black pt-20"
     >
       <motion.div 
         className="max-w-4xl mx-auto px-4 py-8"
@@ -75,7 +75,7 @@ const About = () => {
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             />
             <img
-              src="your-profile-image-url"
+              src="/logo2.jpg"
               alt="Profile"
               className="absolute inset-2 w-36 h-36 rounded-full object-cover border-4 border-white dark:border-gray-800"
             />
@@ -88,7 +88,7 @@ const About = () => {
             }}
             transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
           >
-            About Me
+            Rlzyy
           </motion.h1>
           <motion.p 
             className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
@@ -134,7 +134,7 @@ const About = () => {
         <motion.section variants={itemVariants} className="mb-20">
           <h2 className="text-2xl font-semibold text-center mb-8">Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[1, 2].map((_, index) => (
+            {[1].map((_, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
@@ -145,19 +145,19 @@ const About = () => {
                 className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700"
               >
                 <motion.img 
-                  src={`project${index + 1}-image-url`}
+                  src={`https://raw.githubusercontent.com/rlzyy/izumii-bot/main/components/image/thumbnail.jpg`}
                   alt={`Project ${index + 1}`}
                   className="w-full h-48 object-cover"
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.3 }}
                 />
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">Project {index + 1}</h3>
+                  <h3 className="text-xl font-semibold mb-2">Izumii BOT</h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-4">
-                    Description of project {index + 1}
+                    Telegram bot type Plugins ESM
                   </p>
                   <motion.a
-                    href="#"
+                    href="https://github.com/rlzyy/izumii-bot?tab=readme-ov-file"
                     className="inline-flex items-center text-blue-500 hover:text-blue-600"
                     whileHover={{ x: 5 }}
                   >

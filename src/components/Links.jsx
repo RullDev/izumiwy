@@ -1,20 +1,19 @@
-
 import React from "react";
 import { FaSpotify } from "react-icons/fa";
 import { HiArrowRight } from "react-icons/hi";
 
 const links = [
-  { title: "Personal Website", description: "About me.", url: "#", icon: "🌐" },
-  { title: "Character.ai RestAPI", description: "Documentation for Character.ai API.", url: "#", icon: "🔥" },
-  { title: "WhatsApp Bot", description: "Natsumi Bot WhatsApp.", url: "#", icon: "💬" },
-  { title: "WhatsApp Channel", description: "Channel about Natsumi Bot.", url: "#", icon: "📢" },
+  { title: "Personal Website", description: "About me.", url: "https://rulpshilat.my.id", icon: "🌐" },
+  { title: "Izumii BOT", description: "Confess your feelings through Izumi bot", url: "https://wa.me/6287740175435?text=.confess", icon: "🪐" },
+  { title: "Izumii Circle", description: "Find your online chat friends.", url: "https://chat.whatsapp.com/CvY5sQ0jJku3SzVlfGpVzo", icon: "🕊️" },
+  { title: "Donate", description: "Donate as you wish.", url: "https://saweria.co/RullZY", icon: "💰" },
   { 
     title: "Currently Playing", 
     isSpotify: true,
-    songTitle: "No song playing",
-    artist: "No artist",
-    albumArt: "https://via.placeholder.com/40",
-    url: "#"
+    songTitle: "Chandelier",
+    artist: "Sia",
+    albumArt: "https://i.scdn.co/image/ab67616d0000b2735d199c9f6e6562aafa5aa357",
+    url: "https://open.spotify.com/track/4VrWlk8IQxevMvERoX08iC?si=VrIGeR8FTc-ZVFVOK2pbhA"
   }
 ];
 
@@ -39,6 +38,7 @@ const Links = () => {
                   <p className="text-xs text-gray-400">{link.artist}</p>
                 </div>
               </div>
+              
               <FaSpotify className="text-green-500 text-xl" />
             </>
           ) : (
