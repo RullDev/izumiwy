@@ -7,21 +7,14 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="bg-black text-white min-h-screen font-sans dark:bg-gray-900">
+    <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen font-sans transition-colors duration-300">
       <Header />
-      <div className="flex">
-        <div className="hidden md:block w-64 fixed h-screen bg-white/5 backdrop-blur-sm border-r border-white/10">
-          <div className="p-4 mt-16">
-            <h2 className="text-lg font-semibold">Sidebar</h2>
-          </div>
+      <main>
+        <div className="flex flex-col items-center justify-center px-4 py-20">
+          <Profile />
+          <Links />
         </div>
-        <main className="flex-1 md:ml-64">
-          <div className="flex flex-col items-center justify-center px-4 py-20">
-            <Profile />
-            <Links />
-          </div>
-        </main>
-      </div>
+      </main>
     </div>
   );
 }
