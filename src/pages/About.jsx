@@ -1,21 +1,37 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
-import Typewriter from 'typewriter-effect';
-import { FaReact, FaNodeJs, FaPython, FaJs } from 'react-icons/fa';
+import { FaGithub, FaTwitter, FaLinkedin, FaEnvelope, FaReact, FaNodeJs, FaDatabase, FaCode } from 'react-icons/fa';
 
 const About = () => {
   const pageVariants = {
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    exit: { opacity: 0 }
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+    exit: { opacity: 0, y: -20 }
   };
 
-  const skills = [
-    { icon: FaReact, name: 'React', color: '#61DAFB' },
-    { icon: FaNodeJs, name: 'Node.js', color: '#68A063' },
-    { icon: FaPython, name: 'Python', color: '#FFD43B' },
-    { icon: FaJs, name: 'JavaScript', color: '#F7DF1E' }
-  ];
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        type: "spring",
+        bounce: 0.4
+      }
+    }
+  };
 
   return (
     <motion.div
@@ -23,112 +39,178 @@ const About = () => {
       animate="animate"
       exit="exit"
       variants={pageVariants}
-      className="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-900 via-gray-900 to-black pt-20"
+      className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-20"
     >
-      {/* Animated Stars */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        {[...Array(50)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-white rounded-full"
-            initial={{ opacity: Math.random(), scale: Math.random() }}
-            animate={{
-              y: ['0vh', '100vh'],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 5,
-              repeat: Infinity,
-              ease: 'linear',
-              delay: Math.random() * 5,
-            }}
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `-5vh`,
-            }}
-          />
-        ))}
-      </div>
-
-      <div className="max-w-4xl mx-auto px-4 relative z-10">
-        {/* Profile Section */}
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
+      <motion.div 
+        className="max-w-4xl mx-auto px-4 py-8"
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+      >
+        {/* Profile Section with Animated Background */}
+        <motion.section variants={itemVariants} className="text-center mb-20">
           <motion.div 
-            className="relative w-32 h-32 mx-auto mb-8"
-            whileHover={{ scale: 1.1 }}
-            transition={{ type: "spring", stiffness: 300 }}
+            className="relative w-36 h-36 mx-auto mb-8"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 animate-pulse" />
-            <div className="absolute inset-1 rounded-full bg-black" />
+            <motion.div 
+              className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+              animate={{ 
+                rotate: 360,
+                background: [
+                  "linear-gradient(to right, #3b82f6, #8b5cf6, #ec4899)",
+                  "linear-gradient(to right, #ec4899, #3b82f6, #8b5cf6)",
+                  "linear-gradient(to right, #8b5cf6, #ec4899, #3b82f6)"
+                ]
+              }}
+              transition={{ 
+                rotate: { duration: 15, repeat: Infinity, ease: "linear" },
+                background: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+              }}
+            />
+            <motion.div
+              className="absolute inset-1 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 opacity-50"
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            />
             <img
               src="your-profile-image-url"
               alt="Profile"
-              className="absolute inset-2 w-28 h-28 rounded-full object-cover"
+              className="absolute inset-2 w-36 h-36 rounded-full object-cover border-4 border-white dark:border-gray-800"
             />
           </motion.div>
+          <motion.h1 
+            className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-4"
+            animate={{ 
+              backgroundPosition: ["0%", "100%"],
+              color: ["#2563eb", "#7c3aed"]
+            }}
+            transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
+          >
+            About Me
+          </motion.h1>
+          <motion.p 
+            className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
+            variants={itemVariants}
+          >
+            A passionate developer focused on creating elegant and efficient solutions.
+          </motion.p>
+        </motion.section>
 
-          <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400 mb-4">
-            Space Explorer
-          </h1>
-
-          <div className="text-lg text-gray-300 mb-8">
-            <Typewriter
-              options={{
-                strings: [
-                  "Hello, I'm a passionate developer...",
-                  "I create stunning web experiences...",
-                  "Let's build something amazing together..."
-                ],
-                autoStart: true,
-                loop: true,
-                delay: 50,
-                deleteSpeed: 30
-              }}
-            />
+        {/* Skills Section with Hover Animations */}
+        <motion.section variants={itemVariants} className="mb-20">
+          <h2 className="text-2xl font-semibold text-center mb-8">Skills</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { icon: FaReact, name: 'React', color: 'text-blue-500' },
+              { icon: FaNodeJs, name: 'Node.js', color: 'text-green-500' },
+              { icon: FaDatabase, name: 'Database', color: 'text-yellow-500' },
+              { icon: FaCode, name: 'TypeScript', color: 'text-purple-500' }
+            ].map((skill, index) => (
+              <motion.div
+                key={skill.name}
+                variants={itemVariants}
+                whileHover={{ 
+                  scale: 1.05,
+                  rotate: [0, -5, 5, 0],
+                  transition: { duration: 0.3 }
+                }}
+                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700"
+              >
+                <motion.div
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <skill.icon className={`w-10 h-10 mx-auto mb-3 ${skill.color}`} />
+                </motion.div>
+                <p className="text-center font-medium">{skill.name}</p>
+              </motion.div>
+            ))}
           </div>
-        </motion.div>
+        </motion.section>
 
-        {/* About Text */}
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="prose prose-invert mx-auto mb-16 backdrop-blur-lg bg-white/5 p-6 rounded-xl border border-white/10"
-        >
-          <div className="space-y-4 text-gray-300">
-            <p>
-              I'm a passionate developer exploring the vast universe of code. With a strong foundation in both frontend and backend technologies, I create digital experiences that leave a lasting impression.
-            </p>
-            <p>
-              When I'm not coding, you can find me stargazing, learning new technologies, or contributing to open-source projects. I believe in continuous learning and pushing the boundaries of what's possible.
-            </p>
+        {/* Projects Section with Card Animations */}
+        <motion.section variants={itemVariants} className="mb-20">
+          <h2 className="text-2xl font-semibold text-center mb-8">Projects</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[1, 2].map((_, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                whileHover={{ 
+                  scale: 1.03,
+                  transition: { type: "spring", stiffness: 300 }
+                }}
+                className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700"
+              >
+                <motion.img 
+                  src={`project${index + 1}-image-url`}
+                  alt={`Project ${index + 1}`}
+                  className="w-full h-48 object-cover"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.3 }}
+                />
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2">Project {index + 1}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">
+                    Description of project {index + 1}
+                  </p>
+                  <motion.a
+                    href="#"
+                    className="inline-flex items-center text-blue-500 hover:text-blue-600"
+                    whileHover={{ x: 5 }}
+                  >
+                    View Project →
+                  </motion.a>
+                </div>
+              </motion.div>
+            ))}
           </div>
-        </motion.div>
+        </motion.section>
 
-        {/* Skills Grid */}
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16"
-        >
-          {skills.map((skill, index) => (
+        {/* Contact Form with Input Animations */}
+        <motion.section variants={itemVariants} className="max-w-md mx-auto">
+          <h2 className="text-2xl font-semibold text-center mb-8">Get in Touch</h2>
+          <motion.form 
+            action="mailto:khoirulmustofa767@gmail.com"
+            method="post"
+            encType="text/plain"
+            className="space-y-6"
+          >
             <motion.div
-              key={skill.name}
-              whileHover={{ scale: 1.05, rotate: 5 }}
-              className="p-4 backdrop-blur-lg bg-white/5 rounded-xl border border-white/10 flex flex-col items-center"
+              whileHover={{ scale: 1.02 }}
+              whileFocus={{ scale: 1.02 }}
             >
-              <skill.icon className="w-10 h-10 mb-2" style={{ color: skill.color }} />
-              <span className="text-sm text-gray-300">{skill.name}</span>
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                className="w-full px-4 py-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-blue-500 transition-all"
+              />
             </motion.div>
-          ))}
-        </motion.div>
-      </div>
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileFocus={{ scale: 1.02 }}
+            >
+              <textarea
+                name="message"
+                rows="4"
+                placeholder="Your Message"
+                className="w-full px-4 py-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-blue-500 transition-all"
+              ></textarea>
+            </motion.div>
+            <motion.button
+              type="submit"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 rounded-lg hover:opacity-90 transition-all"
+            >
+              Send Message
+            </motion.button>
+          </motion.form>
+        </motion.section>
+      </motion.div>
     </motion.div>
   );
 };
